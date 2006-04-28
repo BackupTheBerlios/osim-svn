@@ -1,0 +1,25 @@
+#Build Rules if OSim is compiled on BeOS
+
+#BeOS Headers
+BEOS_HDR_DIR = /boot/develop/headers/be ;
+
+BEOS_HEADERS = 
+	[ FDirName $(BEOS_HDR_DIR) ]
+	[ FDirName $(BEOS_HDR_DIR) app ]
+	[ FDirName $(BEOS_HDR_DIR) drivers ]
+	[ FDirName $(BEOS_HDR_DIR) interface ]
+	[ FDirName $(BEOS_HDR_DIR) kernel ]
+	[ FDirName $(BEOS_HDR_DIR) storage ]
+	[ FDirName $(BEOS_HDR_DIR) support ]
+;
+
+HDRS += $(BEOS_HEADERS) ;
+
+#BEOS Libraries
+BEOS_SYSTEM_DIR = /boot/develop/lib/x86 ;
+
+LIBPATHS = 
+	[ FDirName $(BEOS_SYSTEM_DIR) ]
+#	[ FDirName $(BEOS_SYSTEM_DIR) lib ]
+;
+

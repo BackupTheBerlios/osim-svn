@@ -1,0 +1,37 @@
+<sect1 id="Introduction to Operating Systems">
+	<sect2>
+		<title>Welcome to OSim</title>
+		<para>Modern computer systems are made of software and hardware.  Hardware is the physical components in the system, and software provides instructions to the hardware.  Software can be broken into two categories: application programs  and operating systems.  The operating system manages the hardware resources needed by applications.  All applications must communicate with the operating system to access hardware resources.  Operating systems are implemented in layers.  These layers allow software designers the capability of easier troubleshooting.  The lowest layers interface with the hardware and the upper layer contains applications.  <application>OSim</application> displays the current operating system in seven layers.  The layers are made of applications, kernel modules, services, libraries, and a kernel.</para>
+	</sect2>
+	<sect2>
+		<para>For system stability, modern computers execute software in one of two modes: user mode or kernel mode.  User mode is the least privileged mode,and it denies access to the executing software certain functions of the processor.  Kernel mode is the most privileged mode, and it allows access to all the processor functions.  Without this capability of a modern processor, a  spreadsheet application would be able to overwrite memory that was being used by the operating system thus crashing the computer.</para>
+		<para>The top four layers of an operating system run in user mode and the bottom three execute in kernel mode.  Software executing in user mode will not crash the computer, but it does not have the performance or capabilities of software running in kernel mode.  It is the designer of the operating system that chooses which mode certain components should run.</para>
+	</sect2>
+	<sect2>
+		<para>The kernel is the core software of modern operating systems and executed within kernel mode.  Most importantly, the kernel manages the CPU and RAM which are shared by concurrently running applications.  The Windows XP kernel is ntoskrn.exe and is located in C:\WINDOWS.  The Linux kernel is vmlinuz and is located in /boot. The kernel is one of the first  processes executed in memory.  A special program called the bootstrap executes first and loads the kernel into memory. </para>
+	</sect2>
+	<sect2>
+		<para>The kernel would be useless if it could not access any input, output, or storage devices.  To access these devices, it must load modules that provide this functionality.  Device drivers are kernel modules that allow communication between the physical hardware component and the kernel.  Without drivers, a hardware device would be useless.  Most hardware devices connect into a bus.  For example printers, scanners, keyboards, and mice plug into the USB bus.  Internal hardware devices may plug into PCI of ISA buses.  Kernel modules must also be loaded to manage these buses.</para>
+		<para>The System Information application in Windows will show all loaded kernel modules.  The command lsmod will show kernel modules loaded in Linux.  During the computer startup process, kernel modules are loaded into memory with the kernel. </para>
+		<para>The bottom layer in <application>OSim</application> displays current device drivers.  The second layer displays bus managers.  The third layer contains the kernel and other modules.</para>
+		<para>Here are some examples of kernel modules:</para>
+		<itemizedlist>
+			<listitem>Bus Managers – USB, PCI, PCMCIA, IDE</listitem> 	
+			<listitem>Device Drivers – Sound,Video, Network Card</listitem>
+			<listitem>Network Communication Modules – TCP/IP, IPX/SPX, Ethernet, Token Ring</listitem>
+			<listitem>File Systems – NTFS, FAT, FAT32, ISO 9660, UDF</listitem>
+		</itemizedlist>
+	</sect2>
+	<sect2>
+		<para>The software components within user mode must be able to communicate to the software in kernel mode.  This link is provided by system calls.  However applications do not directly communicate with the kernel through system calls.  Instead applications communicate with core libraries that contain the system calls.  All user mode applications must communicate to the kernel through these core libraries.  A library is software that contain instructions that are used by multiple applications.  In Windows the core libraries are kernel32.dll, ntdll.dll, and user32.dll. In Linux the core libraries are the standard C libraries. The fourth layer in OSim represents the core libraries.</para>
+	</sect2>
+	<sect2>
+		<para>Operating systems also contain programs that execute in the background.  They are not visible to the standard user.  These programs, called daemons or services, provide many of the operating system features.  For example, a daemon may run continually in the background of a laptop.  Whenever the daemon detects a wireless connection, it may alert the user.  Operating system designers must choose between placing a service in user mode or kernel mode.  A daemon that manages network connections can be placed in either user mode or kernel mode.  In kernel mode, the daemon will execute better, and the operating system will be capable of higher speed network communications.  However, a network daemon in user mode may be more flexible and stable.  Kernel mode services are usually not managed by the user, but user mode services can. In Microsoft Windows, services that run in kernel mode are called executive services.  In user mode, they are just called services.  In Linux, background applications are often referred to as daemons.  Layer five of <application>OSim</application> displays current services.</para>
+	</sect2>
+	<sect2>
+		<para>Applications often share libraries that are not core system libraries. <application>OSim</application> displays them as layer six.  These are shared software modules that are used my multiple applications.  For example, if a programmer develops a piece of software that calculates the average of a list of numbers, then other programmers can save time by using the first programmer's software.  All the first programmer has to do is place his or her code in a library, and everybody will be able to use it.  In Windows, libraries normally end with a .dll extension, which stands for dynamic linked library. In Linux, they end with a .so extension, which stands for shared object.</para>
+	</sect2>
+	<sect2>
+		<para>Applications are the top layer in <application>OSim</application>.  Applications are software tools designed to meet the users needs.  Applications use libraries to communicate with other applications, services, and the kernel.  In Windows, the command tasklist /m will display the libraries that each application needs. In linux, the command ldd filename will display shared objects that an application needs. </para>
+	</sect2>
+</sect1>

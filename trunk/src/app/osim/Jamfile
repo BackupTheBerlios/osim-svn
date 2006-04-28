@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src app osim ;
+
+# Build Library for OSim
+OSimMain OSim : ColorMenuItem.cpp IntroWindow.cpp LogoView.cpp OSimApp.cpp OSimView.cpp OSimWindow.cpp StatusWindow.cpp TextDetails.cpp 	: -lbe -lOSim : OSim.rsrc : libOSim.so ; 

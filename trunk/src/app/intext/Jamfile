@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src app intext ;
+
+# Build Library for OSim
+OSimMain InText : InTextApp.cpp InTextWindow.cpp InTextView.cpp TOCView.cpp UnitListView.cpp : -lbe -lInText : InText.rsrc : libInText.so ; 

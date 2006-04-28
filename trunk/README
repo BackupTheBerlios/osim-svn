@@ -1,0 +1,36 @@
+
+
+
+SOURCE CODE LAYOUT
+
+BUILD -> 	JAM rules and scripts used for compiling and building packages
+
+SRC ->   	Source code for all components
+
+SRC -> APP		Core Applications
+       -> BIN		Core Command Line Apps
+       -> KERNEL	Core Kernel Add-ons
+       -> LIB		Core Libraries
+       -> UNIT	Insttructional Units
+
+The Skeleton unit provides an example of an instructional unit.  Each unit may contain applications, command line tools, kernel add-ons, libraries, and media to provide a rich learning environment.  
+
+UNIT -> SKELETON -> ADD-ONS 
+			   -> APP		
+		  	   -> BIN
+			   -> KERNEL
+			   -> LIB
+			   -> MEDIA
+			   -> XML		Intructional Text for the unit is locatied within an XML file.
+
+APPLICATION LAYOUT
+
+OSIM -> 	Core applications 
+
+OSIM -> APP 	Unit applications
+	-> BIN	Core and Unit command line applications
+	-> ADD-ONS	Add-ons to the core application (if any for now)
+	-> LIB	Libraries
+	-> LIB -> KERNEL -> ADD-ONS	Kernel add-ons
+	-> MEDIA	Images, Movies, etc... for instructional units
+	-> UNIT	XML files containing instructionial text

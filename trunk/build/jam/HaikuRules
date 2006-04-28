@@ -1,0 +1,16 @@
+#Build Rules
+#OSim is structured similar to the Haiku project
+
+#Main directories used by the build
+OSIM_OUTPUT_DIR	  = [ FDirName $(OSIM_TOP) generated ] ;
+OSIM_OBJECT_DIR	  = [ FDirName $(OSIM_OUTPUT_DIR) objects ] ;
+OSIM_PACKAGE_DIR	  = [ FDirName $(OSIM_OUTPUT_DIR) package ] ;
+OSIM_APPLICATION_DIR = [ FDirName $(OSIM_OUTPUT_DIR) application ] ;
+OSIM_LIBRARY_DIR	  = [ FDirName $(OSIM_APPLICATION_DIR) lib ] ;
+OSIM_ADDON_DIR	  = [ FDirName $(OSIM_APPLICATION_DIR) add-ons ] ;
+OSIM_MOUDLE_DIR	  = [ FDirName $(OSIM_APPLICATION_DIR) modules ] ;
+
+OSIM_BUILD_DIR		  = [ FDirName $(OSIM_TOP) build ] ;
+OSIM_RULES_DIR		  = [ FDirName $(OSIM_BUILD_DIR) jam ] ;
+OSIM_SCRIPTS_DIR	  = [ FDirName $(OSIM_BUILD_DIR) scripts ] ;
+

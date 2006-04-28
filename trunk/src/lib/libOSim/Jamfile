@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src lib libOSim ;
+
+# Build Library for OSim
+SharedLibrary libOSim.so : OSImage.cpp OSRelationship.cpp kinfo_wrapper.c : -lbe ; 

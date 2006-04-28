@@ -1,0 +1,3 @@
+SubDir OSIM_TOP src kernel add-ons ;
+
+SubInclude OSIM_TOP src kernel add-ons kinfo ;

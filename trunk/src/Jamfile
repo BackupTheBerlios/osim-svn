@@ -1,0 +1,7 @@
+SubDir OSIM_TOP src ;
+
+SubInclude OSIM_TOP src app ;
+# SubInclude OSIM_TOP src bin ;
+SubInclude OSIM_TOP src kernel ;
+SubInclude OSIM_TOP src lib ; 
+SubInclude OSIM_TOP src unit ;

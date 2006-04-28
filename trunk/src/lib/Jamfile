@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src lib ;
+
+SubInclude OSIM_TOP src lib libInText ; 
+SubInclude OSIM_TOP src lib libOSim ; 

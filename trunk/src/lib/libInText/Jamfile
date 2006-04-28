@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src lib libInText ;
+
+# Build Library for InTest
+SharedLibrary libInText.so : XMLDocument.cpp UnitView.cpp XMLView.cpp : -lbe ; 

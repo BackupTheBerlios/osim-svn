@@ -1,0 +1,14 @@
+<sect1 id="Introduction to OSim">
+	<sect2>
+		<title>Welcome to OSim</title>
+		<para>OSim is instructional software designed to provide an interactive experience while learning operating system concepts. The software is made of two components, the interactive  textbook and the simulator. The interactive textbook provides lessons to guide you through operating systems. The simulator graphically displays the components of the current operating system, BeOS.  The simulator will update itself to show the current applications</para>
+	</sect2>
+	<sect2>
+		<title>InText</title>
+		<para>The interactive textbook provides an electronic view similar to traditional textbooks.  Each tab describes a section of the book. Choosing an option underneath table of contents will display the chapter under the Lesson tab. </para>
+	</sect2>
+	<sect2>
+		<title>Simulator</title>
+		<para>The simulator graphically displays the components of the active operating system, BeOS. BeOS contains many of the same components found in modern operating systems.  Feel free to play with BeOS a little after using OSim.</para>
+	</sect2>
+</sect1>

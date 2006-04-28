@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src app ;
+
+SubInclude OSIM_TOP src app osim ;
+SubInclude OSIM_TOP src app intext ;

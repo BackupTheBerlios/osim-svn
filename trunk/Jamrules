@@ -1,0 +1,48 @@
+#Build Rules
+#OSim is structured similar to the Haiku project
+
+#Main directories used by the build
+OSIM_OUTPUT_DIR	  = [ FDirName $(OSIM_TOP) generated ] ;
+OSIM_PACKAGE_DIR	  = [ FDirName $(OSIM_OUTPUT_DIR) package ] ;
+
+#Application binaries copied here
+OSIM_APPLICATION_DIR = [ FDirName $(OSIM_OUTPUT_DIR) OSim ] ;
+OSIM_UNIT_APP_DIR	  = [ FDirName $(OSIM_APPLICATION_DIR) app ] ;
+OSIM_BIN_DIR		  = [ FDirName $(OSIM_APPLICATION_DIR) bin ] ;
+OSIM_LIBRARY_DIR	  = [ FDirName $(OSIM_APPLICATION_DIR) lib ] ;
+OSIM_ADDON_DIR	  = [ FDirName $(OSIM_APPLICATION_DIR) add-ons ] ;
+OSIM_MODULE_DIR	  = [ FDirName $(OSIM_LIBRARY_DIR) kernel add-ons ] ;
+OSIM_MEDIA_DIR		  = [ FDirName $(OSIM_APPLICATION_DIR) media ] ;	
+OSIM_XML_DIR		  = [ FDirName $(OSIM_APPLICATION_DIR) unit ] ;
+
+#Object Directories
+OSIM_OBJECT_DIR	  = [ FDirName $(OSIM_OUTPUT_DIR) objects ] ;
+OSIM_BIN_OBJS		  = [ FDirName $(OSIM_OBJECT_DIR) bin ] ;
+OSIM_LIBRARY_OBJS	  = [ FDirName $(OSIM_OBJECT_DIR) lib ] ;
+OSIM_ADDON_OBJS	  = [ FDirName $(OSIM_OBJECT_DIR) add-ons ] ;
+OSIM_MODULE_OBJS	  = [ FDirName $(OSIM_LIBRARY_OBJS) kernel modules ] ;
+
+#OSim Compile rules and scripts
+OSIM_BUILD_DIR		  = [ FDirName $(OSIM_TOP) build ] ;
+OSIM_RULES_DIR		  = [ FDirName $(OSIM_BUILD_DIR) jam ] ;
+OSIM_SCRIPTS_DIR	  = [ FDirName $(OSIM_BUILD_DIR) scripts ] ;
+
+#need to check if the host operating system is BeOS or Haiku later
+include [ FDirName $(OSIM_RULES_DIR) BeOSRules ] ;
+
+#Many objects depend on the Messages.h in the OSim app
+HDRS += [ FDirName $(OSIM_TOP) src app osim ] ;
+HDRS += [ FDirName $(OSIM_TOP) src lib libOSim ] ; 
+HDRS += [ FDirName $(OSIM_TOP) src lib libInText ] ; 
+HDRS += [ FDirName $(OSIM_TOP) src kernel add-ons kinfo ] ; 
+
+LIBPATHS += $(OSIM_LIBRARY_OBJS) ;
+
+#Add System Library Paths
+for i in $(LIBPATHS)
+{
+	LINKFLAGS += -L$(i) ;
+}
+
+#Main rules for builing application
+include [ FDirName $(OSIM_RULES_DIR) MainBuildRules ] ;

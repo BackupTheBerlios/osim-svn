@@ -1,0 +1,52 @@
+Todo:
+
+Step 1
+	
+	Restructure and compile with JAM
+
+Step 2 
+	
+	Upload to berlios.de
+	create basic web site with greneral outline
+
+Step 3
+
+	Break text details into separate binary file
+	Look for other code to organize
+	Try to fix a few bugs
+
+Step 4
+
+	Develope XML format to be used for instruction modules
+
+Step 5
+
+	Convert instruction modules to use an XML format
+	Improve Web site	
+	Ask for educational and haiku comunity for help	
+
+Step 6 
+
+	Special keys for development mode	
+	Instruction Module Development Kit	
+
+Step 7
+
+	Continue Code cleanup and the construction of instruction modules
+	Intructional Module Ideas
+		Network connections
+		File Systems	
+
+
+Add a settings menu:
+	Leave show relationships to this menu and change the name to relationships
+		Should be fine since we are under the VIEW menu
+	We can allow for different color options
+	we need to make heavy use of submenus
+	Be able to change the pulse rate 0, 3, 5, 10, 15, 30
+
+Create an Introduction Screen.  Use a check box to disable the welcome screen.
+	" Welcome to OSim the operating systems simulator"
+
+
+	

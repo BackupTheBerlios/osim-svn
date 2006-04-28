@@ -1,0 +1,4 @@
+SubDir OSIM_TOP src kernel add-ons kinfo ;
+
+KernelModule kinfo : kinfo.c ;
+

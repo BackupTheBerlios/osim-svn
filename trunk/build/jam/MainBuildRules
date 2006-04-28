@@ -1,0 +1,112 @@
+#This file contains the instructions for building each component
+
+rule AddResources
+{
+	Depends $(<) : $(>) ;
+}
+
+actions AddResources
+{
+	xres -o "$(<)" $(>)
+}
+
+actions MimeSet
+{
+	mimeset -f "$(<)"
+}
+
+#For Compiling the main OSim Applications
+rule OSimMain
+{
+
+	#Core Apps <Applicationi Name> : <List of Files> : <needs libs> :  <Resources>	: <OSim libs>
+
+	LOCATE_TARGET = $(OSIM_OBJECT_DIR) ;
+	
+	Main $(1) : $(2) ;
+	DEPENDS $(1) : $(5) ;
+	LINKLIBS on $(1) += $(LINKLIBS) $(3) ;
+	LINKFLAGS on $(1) += $(LINKFLAGS) -Xlinker -soname=_APP_ ;
+	
+	SEARCH on $(4) = $(SEARCH_SOURCE) ;
+	
+	AddResources $(1) : $(4) ;
+	MimeSet $(1) ;
+	
+	InstallBin $(OSIM_APPLICATION_DIR) : $(1) ;	
+}
+
+#For compiling core applications
+rule Application
+{
+	#Core Apps <Applicationi Name> : <List of Files> : <needs libs> :  <Resources>	
+
+	LOCATE_TARGET = $(OSIM_OBJECT_DIR) ;
+	
+	Main $(1) : $(2) ;
+	LINKLIBS on $(1) += $(LINKLIBS) $(3) ;
+	LINKFLAGS on $(1) += $(LINKFLAGS) -Xlinker -soname=_APP_ ;
+	
+	SEARCH on $(4) = $(SEARCH_SOURCE) ;
+	
+	AddResources $(1) : $(4) ;
+	MimeSet $(1) ;
+	
+	InstallBin $(OSIM_UNIT_APP_DIR) : $(1) ;	
+}
+
+#For compiling the core bin commands
+rule BinCommand
+{
+#Core Apps <Applicationi Name> : <List of Files> : <needs libs> :  <Resources>	
+
+	LOCATE_TARGET = $(OSIM_BIN_OBJS) ;
+	
+	Main $(1) : $(2) ;
+	DEPENDS $(1) : libOSim.so ;
+	LINKLIBS on $(1) += $(LINKLIBS) $(3) ;
+	LINKFLAGS on $(1) += $(LINKFLAGS) -Xlinker -soname=_APP_ ;
+	
+	SEARCH on $(4) = $(SEARCH_SOURCE) ;
+	
+	AddResources $(1) : $(4) ;
+	MimeSet $(1) ;
+	
+	InstallBin $(OSIM_BIN_DIR) : $(1) ;	
+}
+
+#For compiling the core libararies
+rule SharedLibrary
+{
+	#SharedLibrary <Library Name> : <List of Files> : <needs libs>
+	
+	LOCATE_TARGET = $(OSIM_LIBRARY_OBJS) ;
+
+	Main $(1) : $(2) ;
+	LINKLIBS on $(1) += $(LINKLIBS) $(3) ;
+	LINKFLAGS on $(1) += $(LINKFLAGS) -nostart -Xlinker -soname=$(1) ;
+
+	InstallLib $(OSIM_LIBRARY_DIR) : $(1) ;
+	
+}
+
+
+#For compiling core kernel modules
+rule KernelModule
+{
+	#Kernel Module <Module Name> : <List of Files> 
+	
+	LOCATE_TARGET = $(OSIM_MODULE_OBJS) ;
+
+	Main $(1) : $(2) ;
+	LINKLIBS on $(1) += $(LINKLIBS) $(3) ;
+	LINKFLAGS on $(1) += $(LINKFLAGS) -nostdlib /boot/develop/lib/x86/_KERNEL_ ;
+	
+	InstallLib $(OSIM_MODULE_DIR) : $(1) ;
+}
+
+#rules for installing the XML files and media
+rule InstallXML
+{
+	InstallFile $(OSIM_XML_DIR) : $(1) ;
+}
